@@ -1,8 +1,23 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import Login from './Login';
+import SignUp from './SignUp';
+import { NextComponentType, NextPageContext } from 'next';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+type AppProps = {
+  pageProps: any
+  Component: NextComponentType<NextPageContext, any, {}> & { layoutProps: any }
 }
 
+function MyApp({ Component, pageProps }: AppProps) {
+  
+  const Layout = Component.layoutProps?.Layout || EmptyLayout;
+
+  return (
+    <div className='container'>
+      <Component {...pageProps} />
+    </div>
+  );
+}
+
+const EmptyLayout = ({children}: any) => <>{children}</>
 export default MyApp

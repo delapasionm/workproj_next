@@ -1,9 +1,20 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
+  width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  display: flex;
+  align-items: middle;
+  justify-content: center;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);  
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: block;
+  margin: auto;
 }
 
 a {
@@ -23,4 +34,33 @@ a {
     color: white;
     background: black;
   }
+}
+
+
+.card {
+  width: auto;
+  height: auto;
+  margin: auto 480px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.568);
+  border-radius: 5px;
+  
+}
+
+.cardel {
+  width: 300px;  
+}
+
+.btn:hover {
+  color: black;
+  cursor: pointer;
+}
+
+#title {
+  color: #008eff;
+  font-weight: bold;
+  font-size: xx-large;
 }
