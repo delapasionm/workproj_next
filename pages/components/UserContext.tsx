@@ -1,12 +1,24 @@
+import { useContext } from "react";
 import React from "react";
 import { createContext } from "react";  
 
-var userf = 'John';
+let username = '';
 
-export const UserContext = React.createContext({
-    user: userf,
-    setUser: (username: string) => userf = 'Paul',
-}); 
+type UserContextType = {
+    user: string;
+    setUser: (username: string) => void;
+}
+
+const userContextDefault: UserContextType = {
+    user: '',
+    setUser: () => {},
+};
+
+export const UserContext = createContext(userContextDefault);
+
+export function useUserContext() {
+    return useContext(UserContext);
+}
 
 /* import { createContext } from "react";
 

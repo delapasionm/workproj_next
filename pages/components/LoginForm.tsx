@@ -16,7 +16,7 @@ export default function LoginForm() {
 
     let navigate = useRouter();
 
-    const { setUser } = React.useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     
     const form = useForm({
         initialValues: {
@@ -46,7 +46,7 @@ export default function LoginForm() {
     const handleSubmit = (values: { username: string; password: string; }) => {
         try {
             //const user = values.username;
-            setUser("Paul"); 
+            setUser(values.username); 
             console.log(values);
              
             

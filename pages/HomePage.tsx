@@ -25,7 +25,7 @@ export default function HomePage() {
     const [opened, setOpened] = useState(false);
     let navigate = useRouter();
 
-    const { user } = React.useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     console.log(user);
     

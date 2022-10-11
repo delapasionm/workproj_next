@@ -1,23 +1,21 @@
 import '../styles/globals.css'
 import Login from './Login';
 import SignUp from './SignUp';
-import { NextComponentType, NextPageContext } from 'next';
-
-type AppProps = {
-  pageProps: any
-  Component: NextComponentType<NextPageContext, any, {}> & { layoutProps: any }
-}
+import React, { useState } from 'react';
+import { AppProps } from 'next/app';
+import { UserContext } from './components/UserContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  
-  const Layout = Component.layoutProps?.Layout || EmptyLayout;
+
+  const [user, setUser] = useState('');
 
   return (
+    <UserContext.Provider value={{ user, setUser }}>
     <div className='container'>
       <Component {...pageProps} />
     </div>
+    </UserContext.Provider>
   );
 }
 
-const EmptyLayout = ({children}: any) => <>{children}</>
 export default MyApp

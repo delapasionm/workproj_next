@@ -1,10 +1,11 @@
 import { Text, Button } from '@mantine/core';                               
 import Link from 'next/link';
-import { useUserContext } from './components/UserContext';
+import React, { useContext } from 'react';
+import { UserContext, useUserContext } from './components/UserContext';
 
 export default function Welcome(){
 
-  const {user} = useUserContext();
+  const {user} = useContext(UserContext);
   
     return (
       <div className='card'>

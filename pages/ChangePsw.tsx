@@ -1,5 +1,4 @@
 import { Text, Button, PasswordInput } from '@mantine/core';                              
-import '../assets/Welcome.css';
 import { Auth } from 'aws-amplify';
 import { useForm } from '@mantine/form';
 import React from 'react';

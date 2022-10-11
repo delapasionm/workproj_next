@@ -4,13 +4,13 @@ import { Auth } from 'aws-amplify';
 import { useContext } from 'react';
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useUserContext } from './UserContext';
+import { UserContext } from './UserContext';
 
 export default function SignUpForm() {
   
   let navigate = useRouter();
 
-  const { setUser } = useUserContext();
+  const { setUser } = useContext(UserContext);
 
   
 
@@ -64,9 +64,19 @@ export default function SignUpForm() {
   })
 } */
 
+const handleSubmit = (values: { username: string; }) => {
+  try {
+    setUser(values.username)
+    console.log(values.username);
+  } catch(err) {
+    console.log(err);
+    
+  }
+  navigate.push("/ConfirmationPage")
+}
+
   return (
-      <form onSubmit={form.onSubmit( (values) => {setUser(values.username), console.log(values.username),
-       navigate.push("/ConfirmationPage")})}>
+      <form onSubmit={form.onSubmit( (values) => { handleSubmit(values)})}>
         <div className='flex-container2'>
             <div className='flex-container'>
                 <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
