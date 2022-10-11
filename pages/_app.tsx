@@ -1,20 +1,21 @@
 import '../styles/globals.css'
-import Login from './Login';
-import SignUp from './SignUp';
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { AppProps } from 'next/app';
 import { UserContext } from './components/UserContext';
+import Layout from './components/Layout';
+
 
 function MyApp({ Component, pageProps }: AppProps) {
+
 
   const [user, setUser] = useState('');
 
   return (
+    <Layout>
     <UserContext.Provider value={{ user, setUser }}>
-    <div className='container'>
       <Component {...pageProps} />
-    </div>
     </UserContext.Provider>
+    </Layout>
   );
 }
 

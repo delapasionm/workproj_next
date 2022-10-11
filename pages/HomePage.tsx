@@ -1,4 +1,4 @@
-import {useState, useContext, createContext} from 'react';
+import {useState, useContext, createContext, ReactElement} from 'react';
 import {UserButton} from './components/UserButton';
 import {IconLogout, IconEdit, IconBook} from '@tabler/icons';
 import {
@@ -16,11 +16,10 @@ import {Auth} from 'aws-amplify';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { UserContext } from './components/UserContext';
-import { UserValues } from './components/LoginForm';
 import React from 'react';
 
 
-export default function HomePage() {
+const HomePage = ({children}: any) => {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
     let navigate = useRouter();
@@ -104,7 +103,9 @@ export default function HomePage() {
                 </Header>
             }
         >
-            
+           {children} 
         </AppShell>
     );
 }
+
+export default HomePage;
