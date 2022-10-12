@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import FullCalendar from "@fullcalendar/react";
+import React, { useContext, useState } from "react";
+import FullCalendar, { CalendarOptions } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
@@ -12,6 +12,8 @@ import { Stack } from "@mui/material";
 import "@fullcalendar/common/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
+import { it } from "node:test";
+import { UserContext } from "../components/UserContext";
 
 type Evento = {
   title: string,
@@ -19,7 +21,8 @@ type Evento = {
 };
 
 export default function CustomCalendar() {
-  const [newInfo, setInfo] = useState<Evento[]>([]);
+  const { user } = useContext(UserContext);
+  const [newInfo, setInfo] = useState<any>([]);
   const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
   const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
   const [events, setEvents] = useState<Evento[]>([]);
@@ -60,7 +63,7 @@ export default function CustomCalendar() {
     <div>
       <FullCalendar
         locales={allLocales}
-        locale='it'
+        locale="it"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         headerToolbar={{
@@ -78,7 +81,7 @@ export default function CustomCalendar() {
         editable
         selectable
         events={events}
-        eventClick={(info) => {setInfo(info.event), setInfoModalOpen(true)}}
+        eventClick={(info: any) => {setInfo(info.event), setInfoModalOpen(true)}}
         views={["dayGridMonth", "dayGridWeek", "dayGridDay"]}
         nowIndicator
         displayEventTime

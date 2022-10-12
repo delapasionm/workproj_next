@@ -1,12 +1,13 @@
 import { Table } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { API, graphqlOperation} from 'aws-amplify';
 import { listUsers } from '../../graphql/queries';
 import { onCreateUser } from '../../graphql/subscriptions';
+import { UserContext } from '../components/UserContext';
 
 export default function CustomTable() {
-
+  const { user } = useContext(UserContext);
   const [users, setUsers] = useState<any>(null);
   const [loading, setLoading] = useState<any>(true);
   const [error, setError] = useState<any>(null);
@@ -27,7 +28,7 @@ export default function CustomTable() {
       setUsers(users);
       setError(null);
       
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       setUsers(null);
     } finally {
@@ -47,7 +48,7 @@ export default function CustomTable() {
          }
       });
       setError(null);
-    }catch (err) {
+    }catch (err: any) {
       setError(err.message);
       setUsers(null);
     } finally {
@@ -55,7 +56,7 @@ export default function CustomTable() {
     }
   };
 
-  const rows =users && users.map((users) => (
+  const rows =users && users.map((users: any) => (
     <tr key={users.id}>
       <td>{users.username}</td>
       <td>{users.email}</td>

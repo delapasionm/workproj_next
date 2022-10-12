@@ -6,7 +6,7 @@ import Layout from './components/Layout';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
 
   if(router.pathname.startsWith('/Homepage/')) {
       return (

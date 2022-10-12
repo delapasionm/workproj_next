@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
+import allLocales from "@fullcalendar/core/locales-all";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import { useMantineTheme, Modal, Text, Button } from "@mantine/core";
+import { UserContext } from "../components/UserContext";
 
 export default function CustomCalendar2() {
-    const [addModalOpen, setAddModalOpen] = useState(false);
-    const [newInfo, setInfo] = useState([]);
+    const { user } = useContext(UserContext);
+    const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
+    const [newInfo, setInfo] = useState<any>([]);
     //const [color, setColor] = useState('yellow');
     const theme = useMantineTheme();
     const componentRef = React.useRef();
@@ -47,7 +50,7 @@ export default function CustomCalendar2() {
   return (
     <div>
         <FullCalendar
-            ref={componentRef}
+            locales={allLocales}
             locale='it'
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
@@ -59,7 +62,7 @@ export default function CustomCalendar2() {
             editable
             selectable
             events={events}
-            eventClick={(info) => {setInfo(info.event),setAddModalOpen(true)}}
+            eventClick={(info: any) => {setInfo(info.event),setAddModalOpen(true)}}
             views={["dayGridMonth", "dayGridWeek", "dayGridDay"]}
             nowIndicator
             displayEventTime
@@ -78,7 +81,7 @@ export default function CustomCalendar2() {
         >
             <Text>{newInfo.title}</Text>
             <Text>{newInfo.startStr}</Text>
-            <Button mt="sm" type="submit" onClick={(newInfo) => {/*, updateEvent(newInfo), setColor('green'),*/console.log(newInfo), newInfo.color = 'green', setAddModalOpen(false)}}> Certo</Button>
+            <Button mt="sm" type="submit" onClick={(newInfo: any) => {/*, updateEvent(newInfo), setColor('green'),*/console.log(newInfo), newInfo.color = 'green', setAddModalOpen(false)}}> Certo</Button>
         </Modal>
     </div>
   );

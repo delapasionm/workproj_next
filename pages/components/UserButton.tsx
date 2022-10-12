@@ -9,6 +9,7 @@ import {
   import { IconChevronRight } from '@tabler/icons';
   import React from 'react';
   
+  
   const useStyles = createStyles((theme) => ({
     user: {
       display: 'block',
@@ -35,7 +36,11 @@ import {
     const { classes } = useStyles();
   
     return (
-      <UnstyledButton className={classes.user} {...others}>
+      <UnstyledButton 
+        className={classes.user} 
+        {...others}
+        
+      >
         <Group>
           <Avatar src={image} radius="xl" />
   

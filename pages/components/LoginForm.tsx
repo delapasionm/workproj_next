@@ -1,5 +1,5 @@
 import {useForm} from '@mantine/form';
-import {PasswordInput, TextInput, Button} from '@mantine/core';
+import {PasswordInput, TextInput, Button, Checkbox, Text} from '@mantine/core';
 import {Auth} from 'aws-amplify';
 import React, {useContext } from "react";
 import { useRouter } from "next/router";
@@ -22,6 +22,9 @@ export default function LoginForm() {
         initialValues: {
             username: '',
             password: '',
+            adminRole: false,
+            nipoteRole: false,
+            nonnoRole: false,
         },
 
         // functions will be used to validate values at corresponding key
@@ -43,17 +46,21 @@ export default function LoginForm() {
 
     } */
 
-    const handleSubmit = (values: { username: string; password: string; }) => {
+    const handleSubmit = (values: { username: string; password: string; adminRole: boolean; nipoteRole: boolean; nonnoRole: boolean;}) => {
         try {
             //const user = values.username;
-            setUser(values.username); 
+            setUser(values); 
             console.log(values);
              
             
         } catch(err) {
             console.log(err);  
         }
-        navigate.push("/HomePage");
+        values.nipoteRole === true ? 
+        navigate.push("/Nipote/HomePage") :
+        values.nonnoRole === true ?
+        navigate.push("/Nonno/HomePage") :
+        navigate.push("/HomePage")
     }
 
     return (
@@ -61,6 +68,10 @@ export default function LoginForm() {
             <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
             <PasswordInput mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
             <Link href='/ForgotPsw'><h6>Password dimenticata?</h6></Link>
+            <Text mt="sm">Scegli il ruolo</Text>
+            <Checkbox mt="md" label="Admin" {...form.getInputProps('adminRole', {type: 'checkbox'})} />
+            <Checkbox mt="md" label="Nipote" {...form.getInputProps('nipoteRole', {type: 'checkbox'})} />
+            <Checkbox mt="md" label="Nonno" {...form.getInputProps('nonnoRole', {type: 'checkbox'})} />
 
             <Button className="btn" type="submit" mt="sm">
                 Invia

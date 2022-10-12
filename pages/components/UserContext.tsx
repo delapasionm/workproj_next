@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import React from "react";
 import { createContext } from "react";  
+import { UserValues } from "./LoginForm";
 
 let username = '';
 
 type UserContextType = {
-    user: string;
-    setUser: (username: string) => void;
+    user: any;
+    setUser: (username: any) => void;
 }
 
 const userContextDefault: UserContextType = {
-    user: '',
+    user: null,
     setUser: () => {},
 };
 
