@@ -4,11 +4,12 @@ import { Button, Text } from '@mantine/core';
 import React from 'react';
 import Link from 'next/link';
 import LoginForm from './components/LoginForm';
+import Layout from './components/Layout';
 
-export default function Login({children}: any) {
+export default function Login() {
   
   return (
-    <div>
+    
       <div className='card'>
         <div className='cardel'>
           <Text id='title'>Accedi</Text>
@@ -26,9 +27,9 @@ export default function Login({children}: any) {
           </Link>
         </div>
       </div>
-      {children}
-    </div>
+   
     
   );
   
 }
+

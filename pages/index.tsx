@@ -1,13 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import styles from '../styles/Home.module.css'
+import Layout from './components/Layout'
 import HomePage from './HomePage'
 import Login from './Login'
 
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,5 +20,6 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
 
 export default Home

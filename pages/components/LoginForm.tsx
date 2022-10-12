@@ -60,7 +60,7 @@ export default function LoginForm() {
         <form onSubmit={form.onSubmit((values) => {handleSubmit(values)})}>
             <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
             <PasswordInput mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
-            <Link href='/forgotpsw'><h6>Password dimenticata?</h6></Link>
+            <Link href='/ForgotPsw'><h6>Password dimenticata?</h6></Link>
 
             <Button className="btn" type="submit" mt="sm">
                 Invia

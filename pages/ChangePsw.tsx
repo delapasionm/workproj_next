@@ -41,16 +41,16 @@ export default function ChangePsw(){
     
 
     return (
-      <div className='card'>
         <div className='cardel'>
           <Text id='titlew'>Cambia la tua password qui:</Text>
-        </div>
-        <form onSubmit={form.onSubmit( () => navigate.push("/HomePage")) } >
+        
+          <form onSubmit={form.onSubmit( () => navigate.push("/HomePage")) } >
             <PasswordInput mt="sm" label="Vecchia password" placeholder="Password"  {...form.getInputProps('oldpsw')} /> <br />
             <PasswordInput mt="sm" label="Nuova password" placeholder="Password"  {...form.getInputProps('newpsw')} /> <br />
             <Button className="btn" type='submit'  mt="sm">Invia</Button>
-        </form>
-      </div>
+          </form>
+        </div>
+      
     );
   
 } 

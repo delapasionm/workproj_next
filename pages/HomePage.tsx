@@ -19,7 +19,7 @@ import { UserContext } from './components/UserContext';
 import React from 'react';
 
 
-const HomePage = ({children}: any) => {
+const HomePage = ({children}:any) => {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
     let navigate = useRouter();
@@ -55,9 +55,9 @@ const HomePage = ({children}: any) => {
             navbar={
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm: 200, lg: 300}}>
                     <Navbar.Section grow>
-                        <Link href="/components/CustomCalendar"><Button color="cyan" mt="sm">Calendario</Button></Link><br/>
-                        <Link href="/components/CustomTable"><Button color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/>
-                        <Link href="/components/CustomCalendar2"><Button color="cyan" mt="sm">Calendario2</Button></Link><br/>
+                        <Link href="/Homepage/CustomCalendar"><Button color="cyan" mt="sm">Calendario</Button></Link><br/>
+                        <Link href="/Homepage/CustomTable"><Button color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/>
+                        <Link href="/Homepage/CustomCalendar2"><Button color="cyan" mt="sm">Calendario2</Button></Link><br/>
                     </Navbar.Section>
                     <Navbar.Section>
                         <Group position="center">
@@ -98,12 +98,12 @@ const HomePage = ({children}: any) => {
                                 mr="xl"
                             />
                         </MediaQuery>
-                        <Link href='/components/Home'><IconBook size={50}/></Link>
+                        <Link href='/Homepage/Home'><IconBook size={50}/></Link>
                     </div>
                 </Header>
             }
         >
-           {children} 
+            {children}
         </AppShell>
     );
 }

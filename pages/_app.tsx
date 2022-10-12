@@ -1,22 +1,28 @@
 import '../styles/globals.css'
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { AppProps } from 'next/app';
 import { UserContext } from './components/UserContext';
 import Layout from './components/Layout';
 
-
-function MyApp({ Component, pageProps }: AppProps) {
-
+function MyApp({ Component, pageProps, router }: AppProps) {
 
   const [user, setUser] = useState('');
 
+  if(router.pathname.startsWith('/Homepage/')) {
+      return (
+      <Layout>
+        <UserContext.Provider value={{ user, setUser }}>
+            <Component {...pageProps} />
+        </UserContext.Provider>
+      </Layout>
+    );
+  }
+
   return (
-    <Layout>
     <UserContext.Provider value={{ user, setUser }}>
       <Component {...pageProps} />
     </UserContext.Provider>
-    </Layout>
-  );
+  )
 }
 
 export default MyApp

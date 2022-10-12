@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 import { useContext } from 'react';
 import React from 'react';
 import { useRouter } from 'next/router';
-import { UserContext, useUserContext } from './components/UserContext';
+import { UserContext } from './components/UserContext';
 
 export default function ConfirmationPage(){
     let navigate = useRouter();
