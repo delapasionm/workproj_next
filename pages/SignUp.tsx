@@ -1,5 +1,5 @@
-import { Text } from '@mantine/core';                                 
-import React from 'react';
+import { Text } from '@mantine/core';
+import React from 'react';                                
 import SignUpForm from './components/SignUpForm';
 
 export default function SignUp() {

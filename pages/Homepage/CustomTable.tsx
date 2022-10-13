@@ -2,7 +2,7 @@ import { Table } from '@mantine/core';
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { API, graphqlOperation} from 'aws-amplify';
-import { listUsers } from '../../graphql/queries';
+//import { listUsers } from '../../graphql/queries';
 import { onCreateUser } from '../../graphql/subscriptions';
 import { UserContext } from '../components/UserContext';
 

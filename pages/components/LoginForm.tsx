@@ -5,6 +5,7 @@ import React, {useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { UserContext } from './UserContext';
+import { userAgent } from 'next/server';
 
  export type UserValues = {
     username: string,
@@ -23,8 +24,8 @@ export default function LoginForm() {
             username: '',
             password: '',
             adminRole: false,
-            nipoteRole: false,
-            nonnoRole: false,
+            tutRole: false,
+            studRole: false,
         },
 
         // functions will be used to validate values at corresponding key
@@ -46,7 +47,7 @@ export default function LoginForm() {
 
     } */
 
-    const handleSubmit = (values: { username: string; password: string; adminRole: boolean; nipoteRole: boolean; nonnoRole: boolean;}) => {
+    const handleSubmit = (values: { username: string; password: string; adminRole: boolean; tutRole: boolean; studRole: boolean;}) => {
         try {
             //const user = values.username;
             setUser(values); 
@@ -56,10 +57,6 @@ export default function LoginForm() {
         } catch(err) {
             console.log(err);  
         }
-        values.nipoteRole === true ? 
-        navigate.push("/Nipote/HomePage") :
-        values.nonnoRole === true ?
-        navigate.push("/Nonno/HomePage") :
         navigate.push("/HomePage")
     }
 
@@ -69,9 +66,11 @@ export default function LoginForm() {
             <PasswordInput mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
             <Link href='/ForgotPsw'><h6>Password dimenticata?</h6></Link>
             <Text mt="sm">Scegli il ruolo</Text>
-            <Checkbox mt="md" label="Admin" {...form.getInputProps('adminRole', {type: 'checkbox'})} />
-            <Checkbox mt="md" label="Nipote" {...form.getInputProps('nipoteRole', {type: 'checkbox'})} />
-            <Checkbox mt="md" label="Nonno" {...form.getInputProps('nonnoRole', {type: 'checkbox'})} />
+            <div style={{display: 'flex'}}>
+                <Checkbox mt="md" label="Admin" {...form.getInputProps('adminRole', {type: 'checkbox'})} />
+                <Checkbox mt="md" label="Tutor" {...form.getInputProps('tutRole', {type: 'checkbox'})} />
+                <Checkbox mt="md" label="Studente" {...form.getInputProps('studRole', {type: 'checkbox'})} />
+            </div>
 
             <Button className="btn" type="submit" mt="sm">
                 Invia

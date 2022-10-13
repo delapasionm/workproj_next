@@ -1,6 +1,6 @@
 import { Text, Button } from '@mantine/core';                               
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import useContext from 'react';
 import { UserContext, useUserContext } from './components/UserContext';
 
 export default function Welcome(){

@@ -10,11 +10,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   if(router.pathname.startsWith('/Homepage/')) {
       return (
-      <Layout>
+      
         <UserContext.Provider value={{ user, setUser }}>
+          <Layout>
             <Component {...pageProps} />
+          </Layout>
         </UserContext.Provider>
-      </Layout>
     );
   }
 

@@ -31,7 +31,7 @@ export default function SignUpForm() {
     },
   });
 
-  /* async function signUp(values: any) {
+   async function signUp(values: any) {
     try {
         const user = await Auth.signUp({
             username : values.username,
@@ -46,11 +46,11 @@ export default function SignUpForm() {
         });
         setUser(user);
         console.log(user);
-        navigate.push("/confirmation");
+        navigate.push("/ConfirmationPage");
     } catch (error) {
         console.log('error signing up:', error);
     }
-} */
+} 
 
 /* function listenToAutoSignInEvent() {
   Hub.listen('auth', ({ payload }) => {
@@ -64,7 +64,7 @@ export default function SignUpForm() {
   })
 } */
 
-const handleSubmit = (values: { username: string; }) => {
+/* const handleSubmit = (values: { username: string; }) => {
   try {
     setUser(values.username)
     console.log(values.username);
@@ -73,10 +73,10 @@ const handleSubmit = (values: { username: string; }) => {
     
   }
   navigate.push("/ConfirmationPage")
-}
+} */
 
   return (
-      <form onSubmit={form.onSubmit( (values) => { handleSubmit(values)})}>
+      <form onSubmit={form.onSubmit( (values) => { signUp(values)})}>
         <div className='flex-container2'>
             <div className='flex-container'>
                 <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>

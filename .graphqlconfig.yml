@@ -1,0 +1,15 @@
+projects:
+  myapp-staging:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: eu-west-2
+        apiId: ndqvyalnobh67k4jawfz6p46we
+        maxDepth: 2

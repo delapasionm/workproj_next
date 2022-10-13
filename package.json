@@ -1,5 +1,5 @@
 {
-  "name": "workproj_ty_next",
+  "name": "work_proj_with_ts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^3.5.7",
     "@babel/preset-react": "^7.18.6",
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
@@ -29,10 +30,11 @@
     "@tabler/icons": "^1.101.0",
     "@types/fullcalendar": "^3.8.0",
     "aws-amplify": "^4.3.37",
+    "aws-amplify-react": "^5.1.9",
     "dayjs": "^1.11.5",
     "next": "12.3.1",
     "next-transpile-modules": "^9.0.0",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
