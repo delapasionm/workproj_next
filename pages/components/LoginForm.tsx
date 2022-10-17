@@ -35,19 +35,23 @@ export default function LoginForm() {
         },
     });
 
-    /* async function signIn(values: any) {
+    async function signIn(values: any) {
         try {
             const user = await Auth.signIn(values.username, values.password);
-            setUser(user);
-            navigate.push("/homepage/home");
+            //setUser(user);
+            const admin = values.adminRole;
+            const tutor = values.tutRole;
+            const student = values.studRole;
+            setUser({...user, admin, tutor, student});
+            navigate.push("/HomePage");
         } catch (error) {
             console.log('error signing in', error);
         }
 
 
-    } */
+    }
 
-    const handleSubmit = (values: { username: string; password: string; adminRole: boolean; tutRole: boolean; studRole: boolean;}) => {
+    /* const handleSubmit = (values: { username: string; password: string; adminRole: boolean; tutRole: boolean; studRole: boolean;}) => {
         try {
             //const user = values.username;
             setUser(values); 
@@ -58,10 +62,10 @@ export default function LoginForm() {
             console.log(err);  
         }
         navigate.push("/HomePage")
-    }
+    } */
 
     return (
-        <form onSubmit={form.onSubmit((values) => {handleSubmit(values)})}>
+        <form onSubmit={form.onSubmit((values) => signIn(values))}>
             <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
             <PasswordInput mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
             <Link href='/ForgotPsw'><h6 className='forgotPsw'>Password dimenticata?</h6></Link>

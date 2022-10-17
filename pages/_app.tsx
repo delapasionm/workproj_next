@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { AppProps } from 'next/app';
 import { UserContext } from './components/UserContext';
 import Layout from './components/Layout';
+import Amplify from 'aws-amplify';
+import awsconfig from '../src/aws-exports'
+
+Amplify.configure(awsconfig);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 

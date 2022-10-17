@@ -1,6 +1,6 @@
 import { Text, Button } from '@mantine/core';                               
 import Link from 'next/link';
-import useContext from 'react';
+import { useContext } from 'react';
 import { UserContext } from './components/UserContext';
 
 export default function Welcome(){
@@ -10,7 +10,7 @@ export default function Welcome(){
     return (
       <div className='card'>
         <div className='cardel'>
-          <Text id='titlew'>Benvenuto! {user}</Text>
+          <Text id='titlew'>Benvenuto! {user.username}</Text>
         </div>
         <p>
             Grazie per aver creato il tuo account. Il profilo è quasi finito devi solo accedere con le credenziali appena create

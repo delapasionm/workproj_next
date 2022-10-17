@@ -24,29 +24,26 @@ export default function ConfirmationPage(){
         },
       });
 
-    /* async function confirmSignUp(values) {
+     async function confirmSignUp(values: { code: any; }) {
         try {
             const {code} = values;
             console.log(code);
-            //const username = localStorage.getItem('username');
-            //console.log(username);
-           await Auth.confirmSignUp(user, code);
-          navigate.push("/welcome", { replace: true });
+            await Auth.confirmSignUp(user, code);
+            navigate.push("/Welcome");
         } catch (error) {
             console.log('error confirming sign up', error);
         }
-    } */
+    } 
 
     return (
       <div className='card'>
         <div className='cardel'>
-          <Text id='titlew'>Ciao! {user}</Text>
+          <Text id='titlew'>Ciao! {user.username}</Text>
         </div>
         <p>
             Ti è stata inviata un email di conferma con un codice, controlla nella tua casella postale e inserisci il codice qui:
         </p>
-        <form onSubmit={form.onSubmit((values) => console.log(values)
-         /*(values) => confirmSignUp(values)*/)} >
+        <form onSubmit={form.onSubmit((values: any) => confirmSignUp(values))} >
             <TextInput  mt="sm" placeholder="Verify Code" {...form.getInputProps('code')}/> <br />
             <Button variant='outline' className="btn" type='submit'  mt="sm" onClick={() => navigate.push("/Welcome")}>Invia</Button>
         </form>

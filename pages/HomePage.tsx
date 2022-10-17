@@ -57,11 +57,11 @@ const HomePage = ({children}:any) => {
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm: 200, lg: 300}}>
                     <Navbar.Section grow>
                         {
-                            user.tutRole ? 
+                            user.tutor ? 
                             <div><Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/></div> :
-                            user.studRole ?
+                            user.student ?
                             <div><Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario2</Button></Link><br/></div> :
-                            user.adminRole ?
+                            user.admin ?
                             <div><Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/></div> :
                             null
                         }
@@ -78,7 +78,7 @@ const HomePage = ({children}:any) => {
                                     <UserButton
                                         image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
                                         name={user.username}
-                                        email={user.username + "@gmail.com"}
+                                        email={user.attributes.email}
                                     />
                                 </Menu.Target>
                                 <Menu.Dropdown>
@@ -120,11 +120,11 @@ const HomePage = ({children}:any) => {
             <div>
                 <h2>Benvenut* {user.username}</h2>
                 {
-                    user.tutRole ? 
+                    user.tutor ? 
                     <p>Nella sezione Calendario potrai creare gli appuntamenti.</p> :
-                    user.studRole ?
+                    user.student ?
                     <p>Nella sezione Calendario2 potrai visualizzare gli eventi disponibili</p> :
-                    user.adminRole ?
+                    user.admin ?
                     <p>Nella sezione Tabella Utenti potrai vedere gli utenti iscritti alla community.</p> :
                     <p>Attenzione! Non hai selezionato alcun ruolo!!</p>
                 }

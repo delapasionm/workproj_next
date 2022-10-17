@@ -31,7 +31,7 @@ export default function SignUpForm() {
     },
   });
 
-   async function signUp(values: any) {
+   async function signUp(values: { username: any; email: any; password: any; confirmPassword?: string; }) {
     try {
         const user = await Auth.signUp({
             username : values.username,
@@ -76,7 +76,7 @@ export default function SignUpForm() {
 } */
 
   return (
-      <form onSubmit={form.onSubmit( (values) => { signUp(values)})}>
+      <form onSubmit={form.onSubmit( (values) => signUp(values))}>
         <div className='flex-container2'>
             <div className='flex-container'>
                 <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
