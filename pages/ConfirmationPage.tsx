@@ -28,17 +28,18 @@ export default function ConfirmationPage(){
         try {
             const {code} = values;
             console.log(code);
-            await Auth.confirmSignUp(user, code);
-            navigate.push("/Welcome");
+            await Auth.confirmSignUp(user.user.username, code);
+            
         } catch (error) {
             console.log('error confirming sign up', error);
         }
+        navigate.push("/Welcome");
     } 
 
     return (
       <div className='card'>
         <div className='cardel'>
-          <Text id='titlew'>Ciao! {user.username}</Text>
+          <Text id='titlew'>Ciao! {user.user.username}</Text>
         </div>
         <p>
             Ti è stata inviata un email di conferma con un codice, controlla nella tua casella postale e inserisci il codice qui:

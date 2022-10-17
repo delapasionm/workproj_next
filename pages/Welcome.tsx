@@ -10,7 +10,7 @@ export default function Welcome(){
     return (
       <div className='card'>
         <div className='cardel'>
-          <Text id='titlew'>Benvenuto! {user.username}</Text>
+          <Text id='titlew'>Benvenuto! {user.user.username}</Text>
         </div>
         <p>
             Grazie per aver creato il tuo account. Il profilo è quasi finito devi solo accedere con le credenziali appena create
