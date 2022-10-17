@@ -1,7 +1,7 @@
 import { Text, Button } from '@mantine/core';                               
 import Link from 'next/link';
 import useContext from 'react';
-import { UserContext, useUserContext } from './components/UserContext';
+import { UserContext } from './components/UserContext';
 
 export default function Welcome(){
 
@@ -18,7 +18,7 @@ export default function Welcome(){
 
         <h2> Compleata il tuo profilo qui:</h2>
         <Link href='/'>
-            <Button>Accedi</Button>
+            <Button variant='outline'>Accedi</Button>
         </Link>
       </div>
     );

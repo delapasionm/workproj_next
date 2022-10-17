@@ -73,3 +73,8 @@ a {
   color: black;
   cursor: pointer;
 }
+
+.forgotPsw:hover {
+  color: #008eff;
+  cursor: pointer;
+}

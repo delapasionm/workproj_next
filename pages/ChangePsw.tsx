@@ -41,6 +41,7 @@ export default function ChangePsw(){
     
 
     return (
+      <div className='card'>
         <div className='cardel'>
           <Text id='titlew'>Cambia la tua password qui:</Text>
         
@@ -50,6 +51,7 @@ export default function ChangePsw(){
             <Button className="btn" type='submit'  mt="sm">Invia</Button>
           </form>
         </div>
+      </div>
       
     );
   

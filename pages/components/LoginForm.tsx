@@ -64,7 +64,7 @@ export default function LoginForm() {
         <form onSubmit={form.onSubmit((values) => {handleSubmit(values)})}>
             <TextInput mt="sm" label="Username" placeholder="Username" {...form.getInputProps('username')}/>
             <PasswordInput mt="sm" label="Password" placeholder="Password" {...form.getInputProps('password')} />
-            <Link href='/ForgotPsw'><h6>Password dimenticata?</h6></Link>
+            <Link href='/ForgotPsw'><h6 className='forgotPsw'>Password dimenticata?</h6></Link>
             <Text mt="sm">Scegli il ruolo</Text>
             <div style={{display: 'flex'}}>
                 <Checkbox mt="md" label="Admin" {...form.getInputProps('adminRole', {type: 'checkbox'})} />
@@ -72,8 +72,8 @@ export default function LoginForm() {
                 <Checkbox mt="md" label="Studente" {...form.getInputProps('studRole', {type: 'checkbox'})} />
             </div>
 
-            <Button className="btn" type="submit" mt="sm">
-                Invia
+            <Button variant='outline' className="btn" type="submit" mt="sm">
+                Accedi
             </Button>
 
 

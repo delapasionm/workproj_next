@@ -23,7 +23,7 @@ export default function Login() {
         <br/>
         <div className='cardel'>
           <Link href='/SignUp'>
-            <Button className='btn'>Iscriviti qui</Button>
+            <Button variant='outline' className='btn'>Iscriviti qui</Button>
           </Link>
         </div>
       </div>

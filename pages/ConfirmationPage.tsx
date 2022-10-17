@@ -48,7 +48,7 @@ export default function ConfirmationPage(){
         <form onSubmit={form.onSubmit((values) => console.log(values)
          /*(values) => confirmSignUp(values)*/)} >
             <TextInput  mt="sm" placeholder="Verify Code" {...form.getInputProps('code')}/> <br />
-            <Button className="btn" type='submit'  mt="sm" onClick={() => navigate.push("/Welcome")}>Invia</Button>
+            <Button variant='outline' className="btn" type='submit'  mt="sm" onClick={() => navigate.push("/Welcome")}>Invia</Button>
         </form>
         
       </div>

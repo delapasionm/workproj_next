@@ -88,7 +88,7 @@ export default function SignUpForm() {
             </div>
         </div>
         
-        <Button className="btn" type="submit" mt="sm">
+        <Button variant='outline' className="btn" type="submit" mt="sm">
           Invia
         </Button>
       </form>
