@@ -1,13 +1,11 @@
 import { Table } from '@mantine/core';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import { API, graphqlOperation} from 'aws-amplify';
-//import { listUsers } from '../../graphql/queries';
-import { onCreateUser } from '../../graphql/subscriptions';
-import { UserContext } from '../components/UserContext';
+import { listUsers } from '../../src/graphql/queries';
+import { onCreateUser } from '../../src/graphql/subscriptions';
 
 export default function CustomTable() {
-  const { user } = useContext(UserContext);
   const [users, setUsers] = useState<any>(null);
   const [loading, setLoading] = useState<any>(true);
   const [error, setError] = useState<any>(null);
@@ -19,6 +17,7 @@ export default function CustomTable() {
 
   const getData = async () => {
     try {
+      
       const response = await API.graphql(graphqlOperation(listUsers,
         {
           limit: 500
@@ -42,7 +41,7 @@ export default function CustomTable() {
         query: onCreateUser
       }
       ).subscribe({
-        next: (createUser) => { 
+        next: (createUser: any) => { 
           setUsers(createUser.value.data);
           console.log(createUser);
          }

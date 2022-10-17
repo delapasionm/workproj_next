@@ -23,7 +23,7 @@ export default function ChangePsw(){
 
     
     
-    /* async function changePassword(values) {
+     async function changePassword(values: { oldpsw: string; newpsw: string; }) {
         
         try {
             Auth.currentAuthenticatedUser()
@@ -32,11 +32,11 @@ export default function ChangePsw(){
             console.log(values);
             
            
-            navigate("/homepage", { replace: true });
+            navigate.push("/");
         }catch (error) {
             console.log('error changing password', error);
         }
-    } */
+    }
 
     
 
@@ -45,7 +45,7 @@ export default function ChangePsw(){
         <div className='cardel'>
           <Text id='titlew'>Cambia la tua password qui:</Text>
         
-          <form onSubmit={form.onSubmit( () => navigate.push("/HomePage")) } >
+          <form onSubmit={form.onSubmit( (values) => changePassword(values) ) } >
             <PasswordInput mt="sm" label="Vecchia password" placeholder="Password"  {...form.getInputProps('oldpsw')} /> <br />
             <PasswordInput mt="sm" label="Nuova password" placeholder="Password"  {...form.getInputProps('newpsw')} /> <br />
             <Button className="btn" type='submit'  mt="sm">Invia</Button>
