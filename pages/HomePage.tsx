@@ -24,17 +24,17 @@ const HomePage = ({children}:any) => {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
     const navigate = useRouter();
-
-
     const { user } = useContext(UserContext);
     console.log(user);
 
     useEffect(() => {
-        !user ? navigate.replace('/') : null
-    }, [])
+        if(user === null) {
+          navigate.push('/');
+        }
+      },[]);
 
 
-    async function signOut() {
+    async function signOut(): Promise<void> {
         try {
             await Auth.signOut();
             navigate.push("/");
@@ -61,13 +61,14 @@ const HomePage = ({children}:any) => {
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm: 200, lg: 300}}>
                     <Navbar.Section grow>
                         {
+                            user === null ? null :
                             user.tutor ? 
                             <div><Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/></div> :
                             user.student ?
                             <div><Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario2</Button></Link><br/></div> :
                             user.admin ?
                             <div><Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/></div> :
-                            null
+                            null 
                         }
                         {/* <div>
                             <Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/>
@@ -81,8 +82,8 @@ const HomePage = ({children}:any) => {
                                 <Menu.Target>
                                     <UserButton
                                         image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-                                        name={user.username}
-                                        email={user.attributes.email}
+                                        name={user === null ? null : user.username}
+                                        email={user === null ? null : user.attributes.email}
                                     />
                                 </Menu.Target>
                                 <Menu.Dropdown>
@@ -122,8 +123,9 @@ const HomePage = ({children}:any) => {
             {children}
             {router.pathname === "/HomePage" ? 
             <div>
-                <h2>Benvenut* {user.username}</h2>
-                {
+                <h2>Benvenut* {!user ? null : user.username}</h2>
+                {   
+                    !user ? null :
                     user.tutor ? 
                     <p>Nella sezione Calendario potrai creare gli appuntamenti.</p> :
                     user.student ?

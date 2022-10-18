@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 import { UserContext } from './components/UserContext';
 import Layout from './components/Layout';
@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   const [user, setUser] = useState(null);
   
-
   if(router.pathname.startsWith('/Homepage/')) {
       return (
         <UserContext.Provider value={{ user, setUser }}>
@@ -32,4 +31,4 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   )
 }
 
-export default MyApp
+export default MyApp;
