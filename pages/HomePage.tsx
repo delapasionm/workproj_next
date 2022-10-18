@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {UserButton} from './components/UserButton';
 import {IconLogout, IconEdit, IconBook} from '@tabler/icons';
 import {
@@ -13,7 +13,7 @@ import {
     Button
 } from '@mantine/core';
 import {Auth} from 'aws-amplify';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { UserContext } from './components/UserContext';
 import React from 'react';
@@ -23,23 +23,27 @@ const HomePage = ({children}:any) => {
     const router = useRouter();
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
-    let navigate = useRouter();
+    const navigate = useRouter();
+
 
     const { user } = useContext(UserContext);
-
     console.log(user);
-    
 
-    /* async function signOut() {
+    useEffect(() => {
+        !user ? navigate.replace('/') : null
+    }, [])
+
+
+    async function signOut() {
         try {
             await Auth.signOut();
-            navigate("/", {replace: true});
+            navigate.push("/");
         } catch (error) {
             console.log('error signing out: ', error);
         }
-    } */
+    }
 
-    function handleClick() {
+    function handleClick(): void {
         navigate.push("/ChangePsw");
     }
 
@@ -83,7 +87,7 @@ const HomePage = ({children}:any) => {
                                 </Menu.Target>
                                 <Menu.Dropdown>
                                     <Menu.Item icon={<IconLogout size={14}/>}
-                                               onClick={() => navigate.push("/")}>
+                                               onClick={() => signOut()}>
                                         Logout
                                     </Menu.Item>
                                     <Menu.Item icon={<IconEdit size={14}/>}
@@ -131,7 +135,6 @@ const HomePage = ({children}:any) => {
                 <p>Cliccando il tuo utente in basso potrai cambiare la Password o fare il Logout.</p>
             </div> : null
         }
-            
         </AppShell>
     );
 }

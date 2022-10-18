@@ -18,7 +18,7 @@ export default function CustomTable() {
   const getData = async () => {
     try {
       
-      const response = await API.graphql(graphqlOperation(listUsers,
+      const response: any = await API.graphql(graphqlOperation(listUsers,
         {
           limit: 500
         }));
