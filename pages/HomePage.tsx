@@ -10,7 +10,8 @@ import {
     Burger,
     Group,
     Menu,
-    Button
+    Button,
+    Text
 } from '@mantine/core';
 import {Auth} from 'aws-amplify';
 import { useRouter } from 'next/router';
@@ -63,9 +64,14 @@ const HomePage = ({children}:any) => {
                         {
                             user === null ? null :
                             user.tutor ? 
-                            <div><Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/></div> :
+                            <div>
+                                <Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
+                            </div> :
                             user.student ?
-                            <div><Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario2</Button></Link><br/></div> :
+                            <div>
+                                <Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
+                                <Link href="/Homepage/HoursPack"><Button variant='subtle' color="cyan" mt="sm">Pacchetti</Button></Link><br/>
+                            </div> :
                             user.admin ?
                             <div><Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/></div> :
                             null 
@@ -123,18 +129,27 @@ const HomePage = ({children}:any) => {
             {children}
             {router.pathname === "/HomePage" ? 
             <div>
-                <h2>Benvenut* {!user ? null : user.username}</h2>
+                <Text size="xl" weight={700}  color="teal" align="center">Benvenutə {!user ? null : user.username}!</Text>
                 {   
                     !user ? null :
                     user.tutor ? 
-                    <p>Nella sezione Calendario potrai creare gli appuntamenti.</p> :
+                    <div>
+                        <Text align="center">{user.username} Sei nella parte Tutor</Text>
+                        <Text align="center">Nella sezione Calendario potrai creare gli appuntamenti.</Text> 
+                    </div> :
                     user.student ?
-                    <p>Nella sezione Calendario2 potrai visualizzare gli eventi disponibili</p> :
+                    <div>
+                        <Text align="center">{user.username} Sei nella parte Cliente</Text>
+                        <Text align="center">Nella sezione Calendario potrai visualizzare gli eventi disponibili</Text> 
+                    </div> :
                     user.admin ?
-                    <p>Nella sezione Tabella Utenti potrai vedere gli utenti iscritti alla community.</p> :
-                    <p>Attenzione! Non hai selezionato alcun ruolo!!</p>
+                    <div>
+                        <Text align="center">{user.username} Sei nella parte Admin</Text>
+                        <Text align="center">Nella sezione Tabella Utenti potrai vedere gli utenti iscritti alla community.</Text> 
+                    </div>:
+                    <Text align="center">Attenzione! Non hai selezionato alcun ruolo!!</Text>
                 }
-                <p>Cliccando il tuo utente in basso potrai cambiare la Password o fare il Logout.</p>
+                <Text align="center">Cliccando il tuo utente in basso potrai cambiare la Password o fare il Logout.</Text>
             </div> : null
         }
         </AppShell>
