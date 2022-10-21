@@ -3,11 +3,14 @@ import { Text, Card, Group, Badge, Image, Button, SimpleGrid, Aside, MediaQuery 
 import { Pacchetti } from '../components/Pack';
 import CartCard from '../components/CartCard';
 import create from 'zustand';
+import { useStore } from '../components/store';
 
 
 const HoursPack = () => {
 
    const setCard = useStore((state: any) => state.updateCard)
+   const setTitle = useStore((state: any) => state.updateTitle)
+   const setPrice = useStore((state: any) => state.updatePrice)
 
   return (
     <div>
@@ -33,7 +36,7 @@ const HoursPack = () => {
                            fullWidth 
                            mt="md" 
                            radius="md"
-                           onClick={() => setCard(true)}
+                           onClick={() => {setCard(true), setTitle(pacchetto.titolo), setPrice(pacchetto.prezzo)}}
                         >
                            Metti nel carrello
                         </Button>
@@ -44,18 +47,12 @@ const HoursPack = () => {
         }
          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
             <Aside p="md"  width={{ sm: 200, lg: 300 }}>
+               <Text size="xl" weight={700}  color="teal" align="center">Carrello:</Text>
                <CartCard />
             </Aside>
          </MediaQuery>
     </div>
   )
 }
-
-export const useStore = create(set => ({
-   card: false,
-   updateCard: (newCard: boolean) => {
-      set({ card: newCard })
-   },
-}));
 
 export default HoursPack
