@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Text, Card, Group, Badge, Image, Button, SimpleGrid, Aside, MediaQuery } from '@mantine/core';
 import { Pacchetti } from '../components/Pack';
 import CartCard from '../components/CartCard';
-import create from 'zustand';
 import { useStore } from '../components/store';
 
 
@@ -11,7 +10,7 @@ const HoursPack = () => {
    const setCard = useStore((state: any) => state.updateCard)
    const setTitle = useStore((state: any) => state.updateTitle)
    const setPrice = useStore((state: any) => state.updatePrice)
-
+   
   return (
     <div>
         <Text size="xl" weight={700}  color="teal" align="center">Pacchetti</Text>
@@ -27,7 +26,7 @@ const HoursPack = () => {
                         <Group position="apart" mt="md" mb="xs">
                            <Text weight={500}>{pacchetto.titolo}</Text>
                            <Badge color="pink" variant="light">
-                              {pacchetto.prezzo}
+                              {pacchetto.prezzo} €
                            </Badge>
                         </Group>
                         <Button 
@@ -43,12 +42,12 @@ const HoursPack = () => {
                   </Card>
                </SimpleGrid>
             </div>   
-        ))
-        }
+        )) }
+
          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
             <Aside p="md"  width={{ sm: 200, lg: 300 }}>
                <Text size="xl" weight={700}  color="teal" align="center">Carrello:</Text>
-               <CartCard />
+                  <CartCard/>
             </Aside>
          </MediaQuery>
     </div>

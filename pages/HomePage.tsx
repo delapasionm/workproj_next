@@ -71,6 +71,7 @@ const HomePage = ({children}:any) => {
                             <div>
                                 <Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
                                 <Link href="/Homepage/HoursPack"><Button variant='subtle' color="cyan" mt="sm">Pacchetti</Button></Link><br/>
+                                <Link href="/Homepage/Orders"><Button variant='subtle' color="cyan" mt="sm">Ordini</Button></Link><br/>
                             </div> :
                             user.admin ?
                             <div><Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/></div> :
@@ -134,17 +135,17 @@ const HomePage = ({children}:any) => {
                     !user ? null :
                     user.tutor ? 
                     <div>
-                        <Text align="center">{user.username} Sei nella parte Tutor</Text>
+                        <Text align="center">{user.username} sei nella parte Tutor</Text>
                         <Text align="center">Nella sezione Calendario potrai creare gli appuntamenti.</Text> 
                     </div> :
                     user.student ?
                     <div>
-                        <Text align="center">{user.username} Sei nella parte Cliente</Text>
+                        <Text align="center">{user.username} sei nella parte Cliente</Text>
                         <Text align="center">Nella sezione Calendario potrai visualizzare gli eventi disponibili</Text> 
                     </div> :
                     user.admin ?
                     <div>
-                        <Text align="center">{user.username} Sei nella parte Admin</Text>
+                        <Text align="center">{user.username} sei nella parte Admin</Text>
                         <Text align="center">Nella sezione Tabella Utenti potrai vedere gli utenti iscritti alla community.</Text> 
                     </div>:
                     <Text align="center">Attenzione! Non hai selezionato alcun ruolo!!</Text>

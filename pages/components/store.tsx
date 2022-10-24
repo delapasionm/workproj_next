@@ -9,8 +9,10 @@ export const useStore = create(set => ({
     updateTitle: (newTitle: string) => {
         set({ title: newTitle })
     },
-    price: '',
-    updatePrice: (newPrice: string) => {
+    price: 0,
+    updatePrice: (newPrice: number) => {
         set({ price: newPrice})
-    }
+    },
+    addPrice: () => set((state: any) => ({price: state.price + state.price})),
+    subPrice: () => set((state: any) => ({price: state.price - state.price })),
  }));
