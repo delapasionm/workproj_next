@@ -4,7 +4,7 @@ import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder, orders } = useStore();
+    const { removeOrder } = useStore();
 
   return (
     <div>

@@ -6,7 +6,7 @@ import { useStore } from '../components/store';
 
 const HoursPack = () => {
 
-   const { addOrders, orders } = useStore();
+   const { addOrders, orders, updateCard } = useStore();
    const [ show, setShow ] = useState<boolean>(false);
    
   return (
@@ -48,19 +48,21 @@ const HoursPack = () => {
          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
             <Aside p="md"  width={{ sm: 200, lg: 300 }}>
             <Text size="xl" weight={700}  color="teal" align="center">Carrello:</Text>
-               {orders.map((order) => (
-                  <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
-               ))}
                {show ?
-                  <Button 
-                     variant="light" 
-                     fullWidth 
-                     mt="md" 
-                     radius="md"
-                     onClick={() => {}}
-                  >
-                     Procedi all'acquisto
-                  </Button>
+                  <div>
+                     {orders.map((order) => (
+                        <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
+                     ))}
+                     <Button 
+                        variant="light" 
+                        fullWidth 
+                        mt="md" 
+                        radius="md"
+                        onClick={() => { updateCard(true) }}
+                     >
+                        Procedi all'acquisto
+                     </Button>
+                  </div>
                   : null
                }
             </Aside>

@@ -5,6 +5,8 @@ interface OrderState {
     orders : Order[];
     addOrders : (titolo : string, prezzo : number) => void;
     removeOrder : (id : number) => void;
+    card : boolean;
+    updateCard: (newCard : boolean) => void;
 }
 
 export const useStore = create<OrderState>((set) => ({
@@ -26,4 +28,6 @@ export const useStore = create<OrderState>((set) => ({
             orders : state.orders.filter((order) => order.id !== id),
         }));
     },
+    card: false,
+    updateCard: (newCard : boolean) => set({ card : newCard}),
  }));
