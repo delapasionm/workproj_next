@@ -1,5 +1,4 @@
-import { Button, TextInput, Card } from '@mantine/core';
-import { formContainer } from 'aws-amplify';
+import { Card } from '@mantine/core';
 import React, { useEffect, useState } from 'react'
 import { useStore } from '../components/store';
 
@@ -9,20 +8,27 @@ interface CustomOrders {
 }
 
 const Orders = () => {
-    const text = useStore((state: any) => state.title);
-    const price = useStore((state: any) => state.price);
+    const text = useStore((state: any) => state.orderTitle);
+    const price = useStore((state: any) => state.orderPrice);
     const [orders, setOrders] = useState<CustomOrders[]>([]);
 
     useEffect(() => {
-        setOrders([...orders, {title : text, price : price}])
-    }, [])
+        setOrders([...orders, {title : text, price : price},])
+    }, [text])
 
     return (
         <div>
             <h1>Ordini</h1>
             {orders.map((order) => (
                 <div key={order.title}>
-                    <Card shadow="sm" p="xs" radius="md" withBorder mt="xl">
+                    <Card 
+                        shadow="sm" 
+                        p="xs" 
+                        radius="md" 
+                        withBorder 
+                        mt="xl"
+                        style={{width : "30vw"}}
+                    >
                         <h3>{order.title}</h3>
                         <h3>{order.price}</h3>
                     </Card>

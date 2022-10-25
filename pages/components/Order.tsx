@@ -1,3 +1,9 @@
+export interface Order {
+    id : number;
+    titolo : string;
+    prezzo : number;
+}
+
 export const Pacchetti = [
     {
         "titolo" : "Pacchetto 1 ora",

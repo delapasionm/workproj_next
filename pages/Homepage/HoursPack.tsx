@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { Text, Card, Group, Badge, Image, Button, SimpleGrid, Aside, MediaQuery } from '@mantine/core';
-import { Pacchetti } from '../components/Pack';
+import { Pacchetti } from '../components/Order';
 import CartCard from '../components/CartCard';
 import { useStore } from '../components/store';
 
-
 const HoursPack = () => {
 
-   const setCard = useStore((state: any) => state.updateCard)
-   const setTitle = useStore((state: any) => state.updateTitle)
-   const setPrice = useStore((state: any) => state.updatePrice)
+   const { addOrders, orders } = useStore();
    
   return (
     <div>
@@ -35,7 +32,9 @@ const HoursPack = () => {
                            fullWidth 
                            mt="md" 
                            radius="md"
-                           onClick={() => {setCard(true), setTitle(pacchetto.titolo), setPrice(pacchetto.prezzo)}}
+                           onClick={() => {
+                              addOrders(pacchetto.titolo, pacchetto.prezzo); 
+                           }}
                         >
                            Metti nel carrello
                         </Button>
@@ -46,8 +45,10 @@ const HoursPack = () => {
 
          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
             <Aside p="md"  width={{ sm: 200, lg: 300 }}>
-               <Text size="xl" weight={700}  color="teal" align="center">Carrello:</Text>
-                  <CartCard/>
+            <Text size="xl" weight={700}  color="teal" align="center">Carrello:</Text>
+               {orders.map((order) => (
+                  <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
+               ))}
             </Aside>
          </MediaQuery>
     </div>
