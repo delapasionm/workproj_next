@@ -7,6 +7,7 @@ import { useStore } from '../components/store';
 const HoursPack = () => {
 
    const { addOrders, orders } = useStore();
+   const [ show, setShow ] = useState<boolean>(false);
    
   return (
     <div>
@@ -33,7 +34,8 @@ const HoursPack = () => {
                            mt="md" 
                            radius="md"
                            onClick={() => {
-                              addOrders(pacchetto.titolo, pacchetto.prezzo); 
+                              addOrders(pacchetto.titolo, pacchetto.prezzo);
+                              setShow(true); 
                            }}
                         >
                            Metti nel carrello
@@ -49,6 +51,18 @@ const HoursPack = () => {
                {orders.map((order) => (
                   <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
                ))}
+               {show ?
+                  <Button 
+                     variant="light" 
+                     fullWidth 
+                     mt="md" 
+                     radius="md"
+                     onClick={() => {}}
+                  >
+                     Procedi all'acquisto
+                  </Button>
+                  : null
+               }
             </Aside>
          </MediaQuery>
     </div>

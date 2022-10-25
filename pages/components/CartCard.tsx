@@ -4,7 +4,7 @@ import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder } = useStore();
+    const { removeOrder, orders } = useStore();
 
   return (
     <div>
@@ -22,15 +22,6 @@ const CartCard = ({id, titolo, prezzo} : Order) => {
                     radius="md"
                 >Annulla</Button>
         </Card>
-        <Button 
-            variant="light" 
-            fullWidth 
-            mt="md" 
-            radius="md"
-            onClick={() => {/*setOrderTitle(title), setOrderPrice(price)*/}}
-        >
-            Procedi all'acquisto
-        </Button>
     </div>
   )
 }

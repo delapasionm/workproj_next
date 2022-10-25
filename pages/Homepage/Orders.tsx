@@ -10,17 +10,18 @@ interface CustomOrders {
 const Orders = () => {
     const text = useStore((state: any) => state.orderTitle);
     const price = useStore((state: any) => state.orderPrice);
-    const [orders, setOrders] = useState<CustomOrders[]>([]);
+    const [setOrders] = useState<CustomOrders[]>([]);
+    const { orders } = useStore(); 
 
-    useEffect(() => {
+   /*  useEffect(() => {
         setOrders([...orders, {title : text, price : price},])
-    }, [text])
+    }, [text]) */
 
     return (
         <div>
             <h1>Ordini</h1>
             {orders.map((order) => (
-                <div key={order.title}>
+                <div key={order.id}>
                     <Card 
                         shadow="sm" 
                         p="xs" 
@@ -29,8 +30,8 @@ const Orders = () => {
                         mt="xl"
                         style={{width : "30vw"}}
                     >
-                        <h3>{order.title}</h3>
-                        <h3>{order.price}</h3>
+                        <h3>{order.titolo}</h3>
+                        <h3>{order.prezzo}</h3>
                     </Card>
                 </div>
             ))}
