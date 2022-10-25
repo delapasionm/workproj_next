@@ -62,12 +62,12 @@ const HomePage = ({children}:any) => {
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm: 200, lg: 300}}>
                     <Navbar.Section grow>
                         {
-                            user === null ? null :
+                            !user ? null :
                             user.tutor ? 
                             <div>
                                 <Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
                             </div> :
-                            user.student ?
+                            user.cliente ?
                             <div>
                                 <Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
                                 <Link href="/Homepage/HoursPack"><Button variant='subtle' color="cyan" mt="sm">Pacchetti</Button></Link><br/>
@@ -89,8 +89,8 @@ const HomePage = ({children}:any) => {
                                 <Menu.Target>
                                     <UserButton
                                         image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-                                        name={user === null ? null : user.username}
-                                        email={user === null ? null : user.attributes.email}
+                                        name={ !user ? null : user.username }
+                                        email={ !user ? null : user.attributes.email }
                                     />
                                 </Menu.Target>
                                 <Menu.Dropdown>
@@ -138,7 +138,7 @@ const HomePage = ({children}:any) => {
                         <Text align="center">{user.username} sei nella parte Tutor</Text>
                         <Text align="center">Nella sezione Calendario potrai creare gli appuntamenti.</Text> 
                     </div> :
-                    user.student ?
+                    user.cliente ?
                     <div>
                         <Text align="center">{user.username} sei nella parte Cliente</Text>
                         <Text align="center">Nella sezione Calendario potrai visualizzare gli eventi disponibili</Text> 

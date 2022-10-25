@@ -25,7 +25,7 @@ export default function LoginForm() {
             password: '',
             adminRole: false,
             tutRole: false,
-            studRole: false,
+            clientRole: false,
         },
 
         // functions will be used to validate values at corresponding key
@@ -41,8 +41,8 @@ export default function LoginForm() {
             //setUser(user);
             const admin = values.adminRole;
             const tutor = values.tutRole;
-            const student = values.studRole;
-            setUser({...user, admin, tutor, student});
+            const cliente = values.clientRole;
+            setUser({...user, admin, tutor, cliente});
             navigate.push("/HomePage");
         } catch (error) {
             console.log('error signing in', error);
@@ -73,7 +73,7 @@ export default function LoginForm() {
             <div style={{display: 'flex'}}>
                 <Checkbox mt="md" label="Admin" {...form.getInputProps('adminRole', {type: 'checkbox'})} />
                 <Checkbox mt="md" label="Tutor" {...form.getInputProps('tutRole', {type: 'checkbox'})} />
-                <Checkbox mt="md" label="Studente" {...form.getInputProps('studRole', {type: 'checkbox'})} />
+                <Checkbox mt="md" label="Cliente" {...form.getInputProps('clientRole', {type: 'checkbox'})} />
             </div>
 
             <Button variant='outline' className="btn" type="submit" mt="sm">

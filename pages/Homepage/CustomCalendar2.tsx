@@ -18,27 +18,27 @@ export default function CustomCalendar2() {
     const events = [
         {
             title: "Prova1", 
-            start: new Date('2022-09-01T00:00:00+02:00'),
+            start: new Date('2022-10-01T00:00:00+02:00'),
         },
         {
             title: "Prova2", 
-            start: new Date('2022-09-02T16:00:00+02:00'),
+            start: new Date('2022-10-02T16:00:00+02:00'),
         },
         {
             title: "Prova3", 
-            start: new Date('2022-09-12T11:00:00+02:00'),
+            start: new Date('2022-10-12T11:00:00+02:00'),
         },
         {
             title: "Prova4", 
-            start: new Date('2022-09-16T12:30:00+02:00'),
+            start: new Date('2022-10-16T12:30:00+02:00'),
         },
         {
             title: "Prova5", 
-            start: new Date('2022-09-20T18:45:00+02:00'),
+            start: new Date('2022-10-20T18:45:00+02:00'),
         },
         {
             title: "Prova6", 
-            start: new Date('2022-09-22T10:00:00+02:00'),
+            start: new Date('2022-10-22T10:00:00+02:00'),
         },
     ]
 
