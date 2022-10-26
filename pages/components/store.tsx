@@ -5,11 +5,15 @@ interface OrderState {
     orders : Order[];
     addOrders : (titolo : string, prezzo : number) => void;
     removeOrder : (id : number) => void;
+    clearOrders : () => void;
+    newOrders : Order[];
+    copyOrders : (titolo : string, prezzo : number) => void;
     card : boolean;
     updateCard: (newCard : boolean) => void;
     prezzo : number;
     addPrezzo : (newPrezzo : number) => void;
     subPrezzo : (newPrezzo : number) => void;
+    clearPrezzo : () => void;
 }
 
 export const useStore = create<OrderState>((set) => ({
@@ -31,9 +35,24 @@ export const useStore = create<OrderState>((set) => ({
             orders : state.orders.filter((order) => order.id !== id),
         }));
     },
+    clearOrders: () => set({ orders : [] }),
+    newOrders: [],
+    copyOrders: (titolo : string, prezzo : number) => {
+        set((state) => ({
+            newOrders: [
+                ...state.newOrders,
+                {
+                    id : Math.floor(Math.random() * 100),
+                    titolo,
+                    prezzo,
+                } as Order,
+            ],
+        }));
+    },
     card: false,
     updateCard: (newCard : boolean) => set({ card : newCard }),
     prezzo : 0,
     addPrezzo : (newPrezzo : number) => set(state => ({ prezzo : state.prezzo + newPrezzo })),
     subPrezzo : (newPrezzo : number) => set(state => ({ prezzo : state.prezzo - newPrezzo})),
+    clearPrezzo : () => set({ prezzo : 0 }),
  }));

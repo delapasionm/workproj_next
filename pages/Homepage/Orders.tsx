@@ -4,7 +4,7 @@ import { useStore } from '../components/store';
 import { UserContext } from '../components/UserContext';
 
 const Orders = () => {
-    const { orders, card } = useStore(); 
+    const { newOrders, card } = useStore(); 
     const { user } = useContext(UserContext);
 
     return (
@@ -14,7 +14,7 @@ const Orders = () => {
             { card ?
                 <div>
                     <Text>{user.username}, ecco gli ordini che hai acquistato:</Text>
-                    {orders.map((order) => (
+                    {newOrders.map((order) => (
                         <div key={order.id}>
                             <Card 
                                 shadow="sm" 

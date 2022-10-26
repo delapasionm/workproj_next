@@ -4,10 +4,11 @@ import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder, addPrezzo, subPrezzo } = useStore();
+    const { removeOrder, addPrezzo, subPrezzo, copyOrders } = useStore();
 
     useEffect(() => {
         addPrezzo(prezzo);
+        copyOrders(titolo, prezzo);
     }, [])
 
   return (
