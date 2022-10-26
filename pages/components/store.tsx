@@ -7,10 +7,8 @@ interface OrderState {
     removeOrder : (id : number) => void;
     clearOrders : () => void;
     newOrders : Order[];
-    copyOrders : (titolo : string, prezzo : number) => void;
+    copyOrders : (id : number, titolo : string, prezzo : number) => void;
     removeNewOrder : (id : number) => void;
-    add : boolean;
-    setAdd : (newAdd : boolean) => void;
     card : boolean;
     updateCard: (newCard : boolean) => void;
     prezzo : number;
@@ -40,12 +38,12 @@ export const useStore = create<OrderState>((set) => ({
     },
     clearOrders: () => set({ orders : [] }),
     newOrders: [],
-    copyOrders: (titolo : string, prezzo : number) => {
+    copyOrders: (id: number, titolo : string, prezzo : number) => {
         set((state) => ({
             newOrders: [
                 ...state.newOrders,
                 {
-                    id : Math.floor(Math.random() * 100),
+                    id,
                     titolo,
                     prezzo,
                 } as Order,
@@ -57,8 +55,6 @@ export const useStore = create<OrderState>((set) => ({
             newOrders : state.newOrders.filter((newOrder) => newOrder.id !== id),
         }));
     },
-    add : false,
-    setAdd : (newAdd : boolean) => set({ add : newAdd }),
     card: false,
     updateCard: (newCard : boolean) => set({ card : newCard }),
     prezzo : 0,

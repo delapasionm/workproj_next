@@ -6,7 +6,7 @@ import { useStore } from '../components/store';
 
 const HoursPack = () => {
 
-   const { addOrders, orders, updateCard, prezzo, clearPrezzo, clearOrders, setAdd } = useStore();
+   const { addOrders, orders, updateCard, prezzo, clearPrezzo, clearOrders } = useStore();
    const [ show, setShow ] = useState<boolean>(false);
    
   return (
@@ -60,7 +60,7 @@ const HoursPack = () => {
                         fullWidth 
                         mt="md" 
                         radius="md"
-                        onClick={() => {updateCard(true), clearPrezzo(), clearOrders(), setAdd(true) }}
+                        onClick={() => {updateCard(true), clearPrezzo(), clearOrders()}}
                      >
                         Procedi all'acquisto
                      </Button>

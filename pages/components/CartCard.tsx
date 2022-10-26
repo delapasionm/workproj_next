@@ -4,13 +4,11 @@ import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder, addPrezzo, subPrezzo, copyOrders, removeNewOrder, add, setAdd } = useStore();
+    const { removeOrder, addPrezzo, subPrezzo, removeNewOrder, copyOrders } = useStore();
 
     useEffect(() => {
         addPrezzo(prezzo);
-        if(add){
-            copyOrders(titolo, prezzo);
-        }
+        copyOrders(id, titolo, prezzo);
     }, [])
 
   return (
@@ -21,7 +19,7 @@ const CartCard = ({id, titolo, prezzo} : Order) => {
                 <Badge color="pink">{prezzo}€</Badge>
             </Group>
                 <Button
-                    onClick={() => {removeOrder(id), subPrezzo(prezzo), setAdd(false), removeNewOrder(id)}}
+                    onClick={() => {removeOrder(id), subPrezzo(prezzo), removeNewOrder(id)}}
                     variant="light" 
                     color="teal" 
                     fullWidth 

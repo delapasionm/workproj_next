@@ -7,6 +7,8 @@ const Orders = () => {
     const { newOrders, card } = useStore(); 
     const { user } = useContext(UserContext);
 
+    console.log(newOrders);
+
     return (
         <div>
             
