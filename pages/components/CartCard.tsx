@@ -1,10 +1,14 @@
 import { Badge, Button, Card, Group, Text } from '@mantine/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder } = useStore();
+    const { removeOrder, addPrezzo, subPrezzo } = useStore();
+
+    useEffect(() => {
+        addPrezzo(prezzo);
+    }, [])
 
   return (
     <div>
@@ -14,7 +18,7 @@ const CartCard = ({id, titolo, prezzo} : Order) => {
                 <Badge color="pink">{prezzo}€</Badge>
             </Group>
                 <Button
-                    onClick={() => {removeOrder(id)}}
+                    onClick={() => {removeOrder(id), subPrezzo(prezzo)}}
                     variant="light" 
                     color="teal" 
                     fullWidth 

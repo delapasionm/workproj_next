@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, Card, Group, Badge, Image, Button, SimpleGrid, Aside, MediaQuery } from '@mantine/core';
 import { Pacchetti } from '../components/Order';
 import CartCard from '../components/CartCard';
@@ -6,7 +6,7 @@ import { useStore } from '../components/store';
 
 const HoursPack = () => {
 
-   const { addOrders, orders, updateCard } = useStore();
+   const { addOrders, orders, updateCard, prezzo } = useStore();
    const [ show, setShow ] = useState<boolean>(false);
    
   return (
@@ -51,7 +51,9 @@ const HoursPack = () => {
                {show ?
                   <div>
                      {orders.map((order) => (
-                        <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
+                        <div key={order.id}>
+                           <CartCard id={order.id} titolo={order.titolo} prezzo={order.prezzo} />
+                        </div>
                      ))}
                      <Button 
                         variant="light" 
@@ -62,6 +64,8 @@ const HoursPack = () => {
                      >
                         Procedi all'acquisto
                      </Button>
+                     <hr />
+                     <Text>{prezzo}€</Text>
                   </div>
                   : null
                }

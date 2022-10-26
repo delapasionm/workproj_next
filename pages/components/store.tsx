@@ -7,6 +7,9 @@ interface OrderState {
     removeOrder : (id : number) => void;
     card : boolean;
     updateCard: (newCard : boolean) => void;
+    prezzo : number;
+    addPrezzo : (newPrezzo : number) => void;
+    subPrezzo : (newPrezzo : number) => void;
 }
 
 export const useStore = create<OrderState>((set) => ({
@@ -29,5 +32,8 @@ export const useStore = create<OrderState>((set) => ({
         }));
     },
     card: false,
-    updateCard: (newCard : boolean) => set({ card : newCard}),
+    updateCard: (newCard : boolean) => set({ card : newCard }),
+    prezzo : 0,
+    addPrezzo : (newPrezzo : number) => set(state => ({ prezzo : state.prezzo + newPrezzo })),
+    subPrezzo : (newPrezzo : number) => set(state => ({ prezzo : state.prezzo - newPrezzo})),
  }));
