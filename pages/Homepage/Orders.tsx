@@ -14,8 +14,8 @@ const Orders = () => {
             { card ?
                 <div>
                     <Text>{user.username}, ecco gli ordini che hai acquistato:</Text>
-                    {newOrders.map((order) => (
-                        <div key={order.id}>
+                    {newOrders.map((newOrder) => (
+                        <div key={newOrder.id}>
                             <Card 
                                 shadow="sm" 
                                 p="xs" 
@@ -24,8 +24,8 @@ const Orders = () => {
                                 mt="xl"
                                 style={{width : "30vw"}}
                             >
-                                <Text weight={500} color="teal">{order.titolo}</Text>
-                                <Badge size='xl' color="pink">{order.prezzo}€</Badge>
+                                <Text weight={500} color="teal">{newOrder.titolo}</Text>
+                                <Badge size='xl' color="pink">{newOrder.prezzo}€</Badge>
                             </Card>
                         </div>
                     ))}

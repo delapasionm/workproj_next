@@ -32,7 +32,7 @@ const HomePage = ({children}:any) => {
         if(user === null) {
           navigate.push('/');
         }
-      },[]);
+    },[]);
 
 
     async function signOut(): Promise<void> {
@@ -142,6 +142,8 @@ const HomePage = ({children}:any) => {
                     <div>
                         <Text align="center">{user.username} sei nella parte Cliente</Text>
                         <Text align="center">Nella sezione Calendario potrai visualizzare gli eventi disponibili</Text> 
+                        <Text align="center">Nella sezione Pacchetti potrai acquistare i pacchetti ore</Text> 
+                        <Text align="center">Nella sezione Ordini potrai visualizzaregli ordini acquistati precedentemente</Text> 
                     </div> :
                     user.admin ?
                     <div>

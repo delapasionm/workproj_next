@@ -1,14 +1,16 @@
 import { Badge, Button, Card, Group, Text } from '@mantine/core'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Order } from './Order';
 import { useStore} from './store';
 
 const CartCard = ({id, titolo, prezzo} : Order) => {
-    const { removeOrder, addPrezzo, subPrezzo, copyOrders } = useStore();
+    const { removeOrder, addPrezzo, subPrezzo, copyOrders, removeNewOrder, add, setAdd } = useStore();
 
     useEffect(() => {
         addPrezzo(prezzo);
-        copyOrders(titolo, prezzo);
+        if(add){
+            copyOrders(titolo, prezzo);
+        }
     }, [])
 
   return (
@@ -19,7 +21,7 @@ const CartCard = ({id, titolo, prezzo} : Order) => {
                 <Badge color="pink">{prezzo}€</Badge>
             </Group>
                 <Button
-                    onClick={() => {removeOrder(id), subPrezzo(prezzo)}}
+                    onClick={() => {removeOrder(id), subPrezzo(prezzo), setAdd(false), removeNewOrder(id)}}
                     variant="light" 
                     color="teal" 
                     fullWidth 
