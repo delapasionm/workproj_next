@@ -1,5 +1,4 @@
 import {useState, useContext, useEffect} from 'react';
-import {UserButton} from './components/UserButton';
 import {IconLogout, IconEdit, IconBook} from '@tabler/icons';
 import {
     AppShell,
@@ -11,7 +10,9 @@ import {
     Group,
     Menu,
     Button,
-    Text
+    Text,
+    UnstyledButton,
+    Avatar
 } from '@mantine/core';
 import {Auth} from 'aws-amplify';
 import { useRouter } from 'next/router';
@@ -21,6 +22,7 @@ import React from 'react';
 
 
 const HomePage = ({children}:any) => {
+    const image = "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
     const router = useRouter();
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
@@ -60,7 +62,7 @@ const HomePage = ({children}:any) => {
 
             navbar={
                 <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{sm: 200, lg: 300}}>
-                    <Navbar.Section grow>
+                    <Navbar.Section>
                         {
                             !user ? null :
                             user.tutor ? 
@@ -77,23 +79,26 @@ const HomePage = ({children}:any) => {
                             <div><Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/></div> :
                             null 
                         }
-                        {/* <div>
-                            <Link href="/Homepage/CustomTable"><Button variant='subtle' color="cyan" mt="sm">Tabella Utenti</Button></Link> <br/>
-                            <Link href="/Homepage/CustomCalendar2"><Button variant='subtle' color="cyan" mt="sm">Calendario2</Button></Link><br/>
-                            <Link href="/Homepage/CustomCalendar"><Button variant='subtle' color="cyan" mt="sm">Calendario</Button></Link><br/>
-                        </div> */}
                     </Navbar.Section>
+                    <br />
+                    <br />
                     <Navbar.Section>
+                        
                         <Group position="center">
-                            <Menu withArrow position='top' transition='rotate-right' transitionDuration={150} shadow="md" width={200}>
+                            <Menu withArrow position='top' transition='rotate-right' transitionDuration={150} shadow="md" width={150}>
                                 <Menu.Target>
-                                    <UserButton
-                                        image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-                                        name={ !user ? null : user.username }
-                                        email={ !user ? null : user.attributes.email }
-                                    />
+                                    <UnstyledButton>
+                                        <Group>
+                                            <Avatar size={40} src={image} radius="xl" color="blue"></Avatar>
+                                            <div>
+                                            <Text>{ !user ? null : user.username }</Text>
+                                            <Text size="xs" color="dimmed">{ !user ? null : user.attributes.email }</Text>
+                                            </div>
+                                        </Group>
+                                    </UnstyledButton> 
                                 </Menu.Target>
-                                <Menu.Dropdown>
+
+                                <Menu.Dropdown >
                                     <Menu.Item icon={<IconLogout size={14}/>}
                                                onClick={() => signOut()}>
                                         Logout
@@ -103,7 +108,6 @@ const HomePage = ({children}:any) => {
                                         Cambia Password
                                     </Menu.Item>
                                 </Menu.Dropdown>
-
                             </Menu>
                         </Group>
                     </Navbar.Section>
@@ -160,3 +164,7 @@ const HomePage = ({children}:any) => {
 }
 
 export default HomePage;
+
+function useStyles(): { classes: any; } {
+    throw new Error('Function not implemented.');
+}
