@@ -64,8 +64,9 @@ const HoursPack = () => {
                      >
                         Procedi all'acquisto
                      </Button>
+                     <br />
                      <hr />
-                     <Text>{prezzo}€</Text>
+                     <Text weight={500}>totale: <Badge size='xl' color="pink">{prezzo}€</Badge></Text>
                   </div>
                   : null
                }

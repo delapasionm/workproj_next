@@ -1,9 +1,13 @@
+import { Loader } from '@mantine/core'
+import { Auth } from 'aws-amplify'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import React, { ReactElement } from 'react'
+import { Props } from 'next/script'
+import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Layout from './components/Layout'
+import { UserContext } from './components/UserContext'
 import HomePage from './HomePage'
 import Login from './Login'
 
@@ -23,3 +27,4 @@ const Home = () => {
 
 
 export default Home
+
