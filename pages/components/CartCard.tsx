@@ -1,5 +1,5 @@
 import { Badge, Button, Card, Group, Text } from '@mantine/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { Order } from './Order';
 import { useStore} from './store';
 

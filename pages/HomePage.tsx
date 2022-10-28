@@ -165,6 +165,3 @@ const HomePage = ({children}:any) => {
 
 export default HomePage;
 
-function useStyles(): { classes: any; } {
-    throw new Error('Function not implemented.');
-}

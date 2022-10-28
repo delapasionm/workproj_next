@@ -1,18 +1,16 @@
 import '../styles/globals.css'
-import React, { Component, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { AppProps } from 'next/app';
 import { UserContext } from './components/UserContext';
 import Layout from './components/Layout';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../src/aws-exports'
-import { useRouter } from 'next/router';
 import { Loader } from '@mantine/core';
 import { Props } from 'next/script';
 
 Amplify.configure(awsconfig);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const navigate = useRouter();
 
   const [user, setUser] = useState(null);
   const value = useMemo(() => ({user, setUser}), [user, setUser])

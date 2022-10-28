@@ -39,7 +39,7 @@ export default function ConfirmationPage(){
     return (
       <div className='card'>
         <div className='cardel'>
-          <Text id='titlew'>Ciao! {user.user.username}</Text>
+          <Text id='titlew'>Ciao! {!user ? null : user.user.username}</Text>
         </div>
         <p>
             Ti è stata inviata un email di conferma con un codice, controlla nella tua casella postale e inserisci il codice qui:

@@ -8,12 +8,9 @@ import { useMantineTheme, Modal, Text, Button } from "@mantine/core";
 import { UserContext } from "../components/UserContext";
 
 export default function CustomCalendar2() {
-    const { user } = useContext(UserContext);
     const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
     const [newInfo, setInfo] = useState<any>([]);
-    //const [color, setColor] = useState('yellow');
     const theme = useMantineTheme();
-    const componentRef = React.useRef();
 
     const events = [
         {
@@ -41,11 +38,6 @@ export default function CustomCalendar2() {
             start: new Date('2022-10-22T10:00:00+02:00'),
         },
     ]
-
-    /*const updateEvent = (newInfo) => {
-        newInfo.color = 'green';
-        componentRef.current('updateEvent',newInfo);
-    }*/
 
   return (
     <div>

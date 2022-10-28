@@ -23,7 +23,6 @@ export default function CustomTable() {
           limit: 500
         }));
       const users = response.data.listUsers.items;
-      //console.log(users);
       setUsers(users);
       setError(null);
       

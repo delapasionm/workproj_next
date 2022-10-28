@@ -5,7 +5,6 @@ import React, {useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { UserContext } from './UserContext';
-import { userAgent } from 'next/server';
 
  export type UserValues = {
     username: string,
@@ -28,7 +27,6 @@ export default function LoginForm() {
             clientRole: false,
         },
 
-        // functions will be used to validate values at corresponding key
         validate: {
             username: (value) => (value.length < 2 ? 'La username deve avere almeno 2 caratteri' : null),
             password: (value) => (value.length < 6 ? 'La password deve avere almeno 6 caratteri' : null),
@@ -38,7 +36,6 @@ export default function LoginForm() {
     async function signIn(values: any) {
         try {
             const user = await Auth.signIn(values.username, values.password);
-            //setUser(user);
             const admin = values.adminRole;
             const tutor = values.tutRole;
             const cliente = values.clientRole;
@@ -50,19 +47,6 @@ export default function LoginForm() {
 
 
     }
-
-    /* const handleSubmit = (values: { username: string; password: string; adminRole: boolean; tutRole: boolean; studRole: boolean;}) => {
-        try {
-            //const user = values.username;
-            setUser(values); 
-            console.log(values);
-             
-            
-        } catch(err) {
-            console.log(err);  
-        }
-        navigate.push("/HomePage")
-    } */
 
     return (
         <form onSubmit={form.onSubmit((values) => signIn(values))}>

@@ -9,10 +9,7 @@ import { UserContext } from './UserContext';
 export default function SignUpForm() {
   
   let navigate = useRouter();
-
   const { setUser } = useContext(UserContext);
-
-  
 
   const form = useForm({
     initialValues: { 
@@ -22,7 +19,6 @@ export default function SignUpForm() {
         confirmPassword: '',
     },
 
-    // functions will be used to validate values at corresponding key
     validate: {
       username:  (value) => (value.length < 2 ? 'La tua username deve avere almeno 2 caratteri' : null),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'email non valida'),
@@ -40,7 +36,7 @@ export default function SignUpForm() {
               email : values.email,
               'custom:username': values.username
             },
-            autoSignIn: { // optional - enables auto sign in after user is confirmed
+            autoSignIn: {
                 enabled: true,
             }
         });
@@ -51,29 +47,6 @@ export default function SignUpForm() {
         console.log('error signing up:', error);
     }
 } 
-
-/* function listenToAutoSignInEvent() {
-  Hub.listen('auth', ({ payload }) => {
-      const { event } = payload;
-      if (event === 'autoSignIn') {
-          const user = payload.data;
-          // assign user
-      } else if (event === 'autoSignIn_failure') {
-          // redirect to sign in page
-      }
-  })
-} */
-
-/* const handleSubmit = (values: { username: string; }) => {
-  try {
-    setUser(values.username)
-    console.log(values.username);
-  } catch(err) {
-    console.log(err);
-    
-  }
-  navigate.push("/ConfirmationPage")
-} */
 
   return (
       <form onSubmit={form.onSubmit( (values) => signUp(values))}>
@@ -91,10 +64,7 @@ export default function SignUpForm() {
         <Button variant='outline' className="btn" type="submit" mt="sm">
           Invia
         </Button>
-      </form>
-      
-  
-    
+      </form>  
   );
 }
 

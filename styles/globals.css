@@ -40,7 +40,7 @@ a {
 .card {
   width: auto;
   height: auto;
-  margin: auto 480px;
+  margin-top: 10vw;
   padding: 20px;
   display: flex;
   flex-direction: column;

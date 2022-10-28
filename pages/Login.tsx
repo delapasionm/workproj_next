@@ -1,10 +1,7 @@
-
 import { Button, Text } from '@mantine/core';
-// import '../assets/Login.css'
 import React from 'react';
 import Link from 'next/link';
 import LoginForm from './components/LoginForm';
-import Layout from './components/Layout';
 
 export default function Login() {
   

@@ -1,11 +1,9 @@
 import { Button, PasswordInput, Text, TextInput } from "@mantine/core";
 import { Auth } from "aws-amplify";
 import { useForm } from "@mantine/form";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { UserContext } from "./components/UserContext";
 
 export default function ForgotPsw() {
 

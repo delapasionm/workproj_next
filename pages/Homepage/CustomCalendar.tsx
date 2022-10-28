@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import FullCalendar, { CalendarOptions } from "@fullcalendar/react";
+import React, { useState } from "react";
+import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from "@fullcalendar/interaction";
@@ -12,8 +12,6 @@ import { Stack } from "@mui/material";
 import "@fullcalendar/common/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
-import { it } from "node:test";
-import { UserContext } from "../components/UserContext";
 
 type Evento = {
   title: string,
@@ -21,7 +19,6 @@ type Evento = {
 };
 
 export default function CustomCalendar() {
-  const { user } = useContext(UserContext);
   const [newInfo, setInfo] = useState<any>([]);
   const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
   const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
@@ -41,7 +38,6 @@ export default function CustomCalendar() {
 
   const handleSubmit= ( values: any) => {
     try {
-      //console.log(values.time);
       const title = values.title;
       const currDate = values.time;
       if (values.title != null) {
