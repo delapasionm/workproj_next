@@ -66,7 +66,7 @@ const HoursPack = () => {
                      </Button>
                      <br />
                      <hr />
-                     <Text weight={500}>totale: <Badge size='xl' color="pink">{prezzo}€</Badge></Text>
+                     <Text weight={500}>totale: <Badge size='xl' color="pink">{Number((prezzo).toFixed(2))}€</Badge></Text>
                   </div>
                   : null
                }
